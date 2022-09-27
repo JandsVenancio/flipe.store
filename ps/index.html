@@ -3,57 +3,135 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="style.css">
-  <title>Tudo Pronto!</title>
-  
-  <!-- Hotjar Tracking Code for https://flipe.store/ps -->
-<script>
-    (function(h,o,t,j,a,r){
-        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-        h._hjSettings={hjid:3176785,hjsv:6};
-        a=o.getElementsByTagName('head')[0];
-        r=o.createElement('script');r.async=1;
-        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-        a.appendChild(r);
-    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-</script>
-  
-  <script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js%27');
-fbq('init', '843052850381765');
-fbq('track', 'AddToCart');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=843052850381765&ev=AddToCart&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
-  
+  <style>
+
+      header {
+        color: white;
+      /*  background-image: url("assets/img/bg.jpeg"); */
+        background-color: rgba(0, 0, 0, 0.6);
+        background-position: center;
+        background-size: cover;
+        background-attachment: fixed;
+        background-blend-mode: darken;
+      }
+
+
+    @font-face {
+      font-family: Gotham Rounded;
+      src: url("font.otf") format("opentype");
+    }
+    *, *::before, *::after {
+      box-sizing: border-box;
+      font-family: Gotham Rounded;
+    }
+    body {
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100vw;
+      height: 100vh;
+      background: url("fundo.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+    .container {
+      width: 700px;
+      max-width: 90%;
+    }
+    .black {
+      background-color: black;
+      padding: 10px;
+      text-align: center;
+      border-radius: 20px;
+      box-shadow: 0 0 10px 2px;
+    }
+    .answer {
+      display: grid;
+      grid-template-columns: repeat(2, auto);
+      gap: 10px;
+    }
+    @media (max-width: 991px) {
+      .answer {
+        display: grid;
+        grid-template-columns: repeat(1, auto);
+        gap: 10px;
+      }
+    }
+    .question {
+      color: white;
+    }
+    .btn {
+      border-radius: 10px;
+      padding: 5px 10px;
+      font-size: 30px;
+      background-color: #f7ce6a;
+      outline: none;
+      text-decoration: none;
+      color: black;
+    }
+    .black h1 {
+      color: yellow;
+    }
+    .black p {
+      font-size: 18px;
+    }
+    .hide {
+      display: none;
+    }
+  </style>
 </head>
 <body> 
   <div class="container">
     <div class="black">
-      <div>
+      <div id="primeira">
         <div class="question">
-          <h1>ATENÇÃO</h1>
-          <p>O vídeo a seguir tem um limite para mais 27 pessoas verem... Você pretende ver até o fim?</p>
+          <h1>Pergunta 1</h1>
+          <p>Você realmente quer descobrir esse segredo?</p>
         </div>
         <div class="answer">
-          <a class="btn" href="https://flipe.store">SIM</a>
+          <button class="btn" onclick="segunda()">SIM</button>
+          <button class="btn" onclick="segunda()">NÃO</button>
         </div>
-      </div>    
+      </div>
+      <div id="segunda" class="hide">
+        <div class="question">
+          <h1>Pergunta 2</h1>
+          <p>Você promete não revelar com ninguém?</p>
+        </div>
+        <div class="answer">
+          <button class="btn" onclick="terceira()">SIM</button>
+          <button class="btn" onclick="terceira()">NÃO</button>
+        </div>
+      </div>
+      <div id="terceira" class="hide">
+        <div class="question">
+          <h1>Pergunta 3</h1>
+          <p>O vídeo a seguir tem um limite para pouquíssimas pessoas verem ao mesmo tempo... Você pretende ver até o fim?</p>
+        </div>
+        <div class="answer">
+          <button class="btn" onclick="redirect()">SIM</button>
+          <button class="btn" onclick="redirect()">NÃO</button>
+        </div>
+      </div>
     </div>
     <p style="text-align: center; font-weight: bold;">© 2022 – Todos os direitos reservados. Este site não faz parte nem é endossado pelo Facebook. Facebook é uma marca comercial da Facebook, Inc.</p>
-  </div>
-  </div>
     <p style="text-align: center; font-weight: bold;"><a href="https://flipe.store/termos.html" style="color: black;">Termos de Uso</a> | <a href="https://flipe.store/privacidade.html" style="color: black;">Política de Privacidade</a></p>
   </div>
-  <script type="text/javascript" src="script.js"></script>
+  <script>
+    function segunda() {
+      document.getElementById("primeira").classList.add("hide")
+      document.getElementById("segunda").classList.remove("hide")
+    }
+    function terceira() {
+      document.getElementById("segunda").classList.add("hide")
+      document.getElementById("terceira").classList.remove("hide")
+    }
+    function redirect() {
+      location.href = "https://flipe.store/"
+    }
+  </script>
 </body>
 </html>
